@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin — 2026 Magazine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body class="admin">
+
+  <!-- LOGIN -->
+  <div id="login-view" class="admin-login">
+    <div class="login-box">
+      <h1>2026 — admin</h1>
+      <input type="password" id="pw" placeholder="password" autocomplete="current-password">
+      <button id="login-btn">enter</button>
+      <div class="login-error" id="login-error"></div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD: list of articles + "new" -->
+  <div id="dash-view" class="admin-dash" hidden>
+    <div class="admin-bar">
+      <span class="admin-title">contributions</span>
+      <div class="admin-bar-actions">
+        <button id="new-btn">+ new contribution</button>
+        <button id="logout-btn" class="ghost">logout</button>
+      </div>
+    </div>
+    <div class="admin-list" id="admin-list"></div>
+  </div>
+
+  <!-- EDITOR -->
+  <div id="editor-view" class="admin-editor" hidden>
+    <div class="admin-bar">
+      <button id="back-btn" class="ghost">← back</button>
+      <div class="admin-bar-actions">
+        <label class="pub-toggle">
+          <input type="checkbox" id="published" checked> published
+        </label>
+        <button id="save-btn">save</button>
+      </div>
+    </div>
+
+    <div class="editor-scroll">
+      <div class="editor-inner">
+        <!-- meta -->
+        <div class="field">
+          <label>title</label>
+          <input type="text" id="e-title" placeholder="—">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>author</label>
+            <input type="text" id="e-author" placeholder="—">
+          </div>
+          <div class="field">
+            <label>date</label>
+            <input type="date" id="e-date">
+          </div>
+        </div>
+
+        <!-- cover -->
+        <div class="field">
+          <label>title image</label>
+          <div class="cover-drop" id="cover-drop">
+            <img id="cover-preview" alt="">
+            <span class="cover-hint" id="cover-hint">click to upload title image</span>
+            <input type="file" id="cover-file" accept="image/*" hidden>
+          </div>
+        </div>
+        <div class="field">
+          <label>title image credit</label>
+          <input type="text" id="e-cover-credit" placeholder="—">
+        </div>
+
+        <!-- blocks -->
+        <div class="blocks" id="blocks"></div>
+
+        <!-- add block buttons -->
+        <div class="add-block-row">
+          <button class="add-block" data-kind="text">+ text</button>
+          <button class="add-block" data-kind="image">+ image</button>
+          <button class="add-block" data-kind="embed">+ embed</button>
+        </div>
+
+        <div class="editor-error" id="editor-error"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* 2026 Magazine — shared styles */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --fg: #111;
+  --muted: #aaa;
+  --muted2: #888;
+  --faint: #bbb;
+  --bg: #fff;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Sidebar nav (desktop) ─────────────────────────── */
+.sidebar {
+  position: fixed; top: 22px; left: 0; width: 160px;
+  padding: 0 24px; z-index: 100;
+}
+.sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.nav-link {
+  font-size: 10px; color: var(--muted); text-decoration: none;
+  letter-spacing: 0.06em; display: block; transition: color 0.15s;
+}
+.nav-link:hover { color: var(--fg); font-style: italic; }
+.nav-link.active { color: var(--fg); }
+
+.mobile-header { display: none; }
+
+.site-date {
+  position: fixed; top: 22px; right: 24px;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.04em; z-index: 100;
+}
+
+/* ─── Page content ──────────────────────────────────── */
+.page-content {
+  padding-left: 160px; min-height: 100vh;
+  display: flex; justify-content: center;
+}
+
+/* ─── Article list (home) ───────────────────────────── */
+.list {
+  padding: 80px 40px; display: flex; flex-direction: column;
+  align-items: center; width: 100%; max-width: 620px;
+}
+.article-row {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 14px 0; width: 100%;
+  text-decoration: none; transition: opacity 0.15s;
+}
+.article-row:hover .article-title,
+.article-row:hover .article-meta { font-style: italic; }
+.article-title {
+  font-size: 11px; font-weight: 300; color: var(--muted2);
+  letter-spacing: 0.02em; line-height: 1.4;
+}
+.article-meta {
+  font-size: 9px; color: var(--faint); margin-top: 3px; letter-spacing: 0.04em;
+}
+.loading { color: var(--faint); font-size: 10px; }
+
+/* ─── Article view ──────────────────────────────────── */
+.article-wrap {
+  padding: 40px 40px 120px; width: 100%; max-width: 820px;
+}
+.cover { width: 100%; }
+.cover img { width: 100%; height: auto; display: block; }
+.image-credit {
+  text-align: right; font-size: 9px; color: var(--faint);
+  margin-top: 6px; letter-spacing: 0.04em;
+}
+.article-header { margin-top: 28px; }
+.article-title-main {
+  font-size: 11px; font-weight: 500; color: var(--muted2); letter-spacing: 0.02em;
+}
+.article-date { font-size: 9px; color: var(--faint); margin-top: 2px; }
+.article-author { font-size: 9px; color: var(--faint); margin-top: 2px; }
+
+.article-body { margin-top: 36px; }
+.block-text {
+  font-size: 11px; font-weight: 300; color: var(--muted2);
+  line-height: 1.75; letter-spacing: 0.01em; margin-bottom: 20px;
+  white-space: pre-wrap;
+}
+.block-text strong { font-weight: 500; color: var(--muted2); }
+.block-text em { font-style: italic; }
+.block-image { margin: 28px 0; }
+.block-image img { width: 100%; height: auto; display: block; }
+.block-caption {
+  text-align: right; font-size: 9px; color: var(--faint);
+  margin-top: 6px; letter-spacing: 0.04em;
+}
+.block-embed { margin: 28px 0; }
+
+.back-top {
+  display: block; text-align: center; margin-top: 60px;
+  font-size: 12px; color: var(--muted); text-decoration: none;
+}
+.back-top:hover { color: var(--fg); font-style: italic; }
+
+/* ─── Mobile ────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .sidebar { display: none; }
+  .site-date { position: static; display: block; text-align: right; padding: 14px 20px 0; }
+  .mobile-header { display: block; width: 100%; padding: 14px 20px 0; }
+  .mobile-nav { display: flex; gap: 20px; width: 100%; padding: 8px 4px 0; }
+  .mobile-nav a {
+    font-size: 9px; color: var(--muted); letter-spacing: 0;
+    text-decoration: none; transition: color 0.15s;
+  }
+  .mobile-nav a:hover, .mobile-nav a.active { color: var(--fg); }
+  .page-content { padding-left: 0; }
+  .list { padding: 30px 20px 60px; }
+  .article-wrap { padding: 20px 20px 80px; }
+}

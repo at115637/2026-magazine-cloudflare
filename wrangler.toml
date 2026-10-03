@@ -1,0 +1,16 @@
+name = "mag"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mag-d1"
+database_id = "REPLACE_WITH_YOUR_D1_ID"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "mag-r2"
+
+# Secrets (set via Cloudflare Dashboard → Workers & Pages → mag → Settings → Variables):
+# ADMIN_PASSWORD  – the login password
+# JWT_SECRET      – random string for token signing (e.g. openssl rand -hex 32)
